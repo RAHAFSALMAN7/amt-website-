@@ -43,7 +43,7 @@ import OSP_Solutions from './OSP_Solutions/OSP_Solutions';
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-cream text-dark-blue overflow-x-hidden font-body">
+<div className="min-h-screen bg-white text-dark-blue overflow-x-hidden font-body">
         <Header />
 
         <Routes>

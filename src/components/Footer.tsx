@@ -50,18 +50,18 @@ const Footer = () => {
             {/* ISO 9001 */}
             <div className="flex flex-col items-start text-sm md:text-base">
               <img src="/images/Logo_of_the_ISO.png" alt="ISO 9001 Logo" className="w-32 h-auto object-contain" />
-              <a href="/pdf/AMT_iso.pdf" target="_blank" rel="noopener noreferrer" className="hover:underline mt-1">
+              <a href="/pdf/AMT_iso.pdf" target="_blank" rel="noopener noreferrer" className="hover:underline mt-1 text-[#292929]">
                 ISO 9001:2015
               </a>
-              <div>Quality Management Systems</div>
+              <div className="text-[#292929]">Quality Management Systems</div>
             </div>
             {/* ISO 45001 */}
             <div className="flex flex-col items-start text-sm md:text-base">
               <img src="/images/Logo_of_the_ISO.png" alt="ISO 45001 Logo" className="w-32 h-auto object-contain" />
-              <a href="/pdf/amt_iso2.pdf" target="_blank" rel="noopener noreferrer" className="hover:underline mt-1">
+              <a href="/pdf/amt_iso2.pdf" target="_blank" rel="noopener noreferrer" className="hover:underline mt-1 text-[#292929]">
                 ISO 45001:2018
               </a>
-              <div>Safety Management Systems</div>
+              <div className="text-[#292929]">Safety Management Systems</div>
             </div>
           </div>
         </div>
@@ -69,28 +69,26 @@ const Footer = () => {
         {/* عمود Contact Us */}
         <div className="flex-1 flex flex-col items-start text-left">
           <span className="font-semibold mb-3">{t.contactUsTitle}</span>
-          <div className="space-y-4 text-sm md:text-base"> {/* المسافة بين كل سطر */}
+          <div className="space-y-4 text-sm md:text-base">
             <div>Tel.: +966 13 810 05 47</div>
             <div>Fax: +966 13 810 05 46</div>
             <div>Email: info@amt-arabia.com</div>
           </div>
 
-          {/* مسافة أكبر قبل Office Hours */}
           <div className="mt-8">
             <span className="font-semibold mb-3 block">{t.officeHoursTitle}</span>
-            <div className="space-y-3 text-sm md:text-base"> {/* المسافة بين سطور Office Hours */}
+            <div className="space-y-3 text-sm md:text-base">
               <div>{t.officeHoursTime[0]}</div>
               <div>{t.officeHoursTime[1]}</div>
             </div>
           </div>
 
-          {/* Social Icons */}
           <div className="flex space-x-4 mt-6">
             {socialLinks.map((social, i) => {
               const Icon = social.icon;
               return (
-                <div key={i} className="p-3 rounded-full bg-white/30 transition-colors" title={social.label}>
-                  <Icon className="w-5 h-5" />
+                <div key={i} className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors" title={social.label}>
+                  <Icon className="w-5 h-5 text-[#851A18]" />
                 </div>
               );
             })}
@@ -121,7 +119,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom */}
-      <div className="mt-12 border-t border-gray-300 pt-6 flex flex-col lg:flex-row justify-between text-left text-sm">
+      <div className="mt-12 border-t border-gray-300 pt-6 flex flex-col lg:flex-row justify-between text-left text-sm text-[#292929]">
         <span>{t.copyright}</span>
         <div className="flex space-x-4 mt-3 lg:mt-0">
           {t.bottom.map((link, i) => (

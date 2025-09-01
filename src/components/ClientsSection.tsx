@@ -22,10 +22,11 @@ const ClientsSection = () => {
   const totalPages = Math.ceil(clients.length / 3);
   const currentPage = Math.floor(currentIndex / 3);
 
-  const nextClients = () => setCurrentIndex(prev => prev + 3 >= clients.length ? 0 : prev + 3);
-  const prevClients = () => setCurrentIndex(prev => prev === 0 ? clients.length - 3 : prev - 3);
+  const nextClients = () =>
+    setCurrentIndex((prev) => (prev + 3 >= clients.length ? 0 : prev + 3));
+  const prevClients = () =>
+    setCurrentIndex((prev) => (prev === 0 ? clients.length - 3 : prev - 3));
 
-  // Auto slide for clients
   useEffect(() => {
     const interval = setInterval(nextClients, 3000);
     return () => clearInterval(interval);
@@ -33,28 +34,39 @@ const ClientsSection = () => {
 
   // Testimonials slider
   const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const prevTestimonial = () => setTestimonialIndex(prev => prev === 0 ? clients.length - 1 : prev - 1);
-  const nextTestimonial = () => setTestimonialIndex(prev => prev === clients.length - 1 ? 0 : prev + 1);
+  const prevTestimonial = () =>
+    setTestimonialIndex((prev) =>
+      prev === 0 ? clients.length - 1 : prev - 1
+    );
+  const nextTestimonial = () =>
+    setTestimonialIndex((prev) =>
+      prev === clients.length - 1 ? 0 : prev + 1
+    );
 
-  // Auto slide for testimonials
   useEffect(() => {
     const interval = setInterval(() => {
-      setTestimonialIndex(prev => prev === clients.length - 1 ? 0 : prev + 1);
+      setTestimonialIndex((prev) =>
+        prev === clients.length - 1 ? 0 : prev + 1
+      );
     }, 4000);
     return () => clearInterval(interval);
   }, [clients.length]);
 
   return (
-    <section className="flex flex-col items-center my-20 px-6">
-
+    <section
+      className="flex flex-col items-center my-20 px-6"
+      style={{ backgroundColor: "#FFFFFF" }}
+    >
       {/* Clients Section */}
-      <h2 className="text-3xl md:text-4xl font-bold mb-12">Our Major Clients</h2>
+      <h2 className="text-3xl md:text-4xl font-bold mb-12">
+        Our Major Clients
+      </h2>
       <div className="w-full max-w-5xl flex justify-center relative overflow-hidden">
-
         {/* Left Arrow */}
         <button
           onClick={prevClients}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow bg-white"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow"
+          style={{ backgroundColor: "#FFFFFF" }}
         >
           <ChevronLeft size={32} />
         </button>
@@ -68,9 +80,17 @@ const ClientsSection = () => {
             transition={{ duration: 0.5 }}
             className="flex justify-center gap-16"
           >
-            {clients.slice(currentIndex, currentIndex + 3).map(client => (
-              <div key={client.id} className="client-circle flex items-center justify-center bg-white shadow-md">
-                <img src={client.logo} alt={client.name} className="client-image object-contain" />
+            {clients.slice(currentIndex, currentIndex + 3).map((client) => (
+              <div
+                key={client.id}
+                className="client-circle flex items-center justify-center shadow-md"
+                style={{ backgroundColor: "#FFFFFF" }}
+              >
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="client-image object-contain"
+                />
               </div>
             ))}
           </motion.div>
@@ -79,7 +99,8 @@ const ClientsSection = () => {
         {/* Right Arrow */}
         <button
           onClick={nextClients}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow bg-white"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow"
+          style={{ backgroundColor: "#FFFFFF" }}
         >
           <ChevronRight size={32} />
         </button>
@@ -87,14 +108,23 @@ const ClientsSection = () => {
 
       <div className="flex mt-6 gap-2">
         {Array.from({ length: totalPages }).map((_, idx) => (
-          <span key={idx} className={`w-3 h-3 rounded-full ${idx === currentPage ? "bg-red-600" : "bg-gray-400"}`}></span>
+          <span
+            key={idx}
+            className={`w-3 h-3 rounded-full ${
+              idx === currentPage ? "bg-red-600" : "bg-gray-400"
+            }`}
+          ></span>
         ))}
       </div>
 
       {/* Testimonials Section */}
-      <h2 className="text-3xl md:text-4xl font-bold mt-32 mb-12 border-b-2 border-white">Testimonials</h2>
-      <div className="w-full py-16 flex justify-center relative" style={{ backgroundColor: "#851A18" }}>
-
+      <h2 className="text-3xl md:text-4xl font-bold mt-32 mb-12 border-b-2 border-white">
+        Testimonials
+      </h2>
+      <div
+        className="w-full py-16 flex justify-center relative"
+        style={{ backgroundColor: "#851A18" }}
+      >
         {/* Left Arrow */}
         <button
           onClick={prevTestimonial}
@@ -106,14 +136,16 @@ const ClientsSection = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={testimonialIndex}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center gap-6 max-w-3xl text-center px-6"
           >
-            {/* Image inside white circle */}
-            <div className="testimonial-circle flex items-center justify-center bg-white shadow-md">
+            <div
+              className="testimonial-circle flex items-center justify-center shadow-md"
+              style={{ backgroundColor: "#FFFFFF" }}
+            >
               <img
                 src={clients[testimonialIndex].logo}
                 alt={clients[testimonialIndex].name}
@@ -121,13 +153,19 @@ const ClientsSection = () => {
               />
             </div>
 
-            {/* Testimonial Text */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
+            <div
+              className="rounded-xl p-6 shadow-md"
+              style={{ backgroundColor: "#FFFFFF" }}
+            >
               <p className="text-lg md:text-xl italic">
                 "{clients[testimonialIndex].testimonial}"
               </p>
-              <span className="font-semibold mt-2 block">{clients[testimonialIndex].name}</span>
-              <span className="text-gray-500 block">{clients[testimonialIndex].position}</span>
+              <span className="font-semibold mt-2 block">
+                {clients[testimonialIndex].name}
+              </span>
+              <span className="text-gray-500 block">
+                {clients[testimonialIndex].position}
+              </span>
             </div>
           </motion.div>
         </AnimatePresence>

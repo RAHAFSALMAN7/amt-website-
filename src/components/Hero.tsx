@@ -25,7 +25,7 @@ const Hero = () => {
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           YOUR PARTNER FOR <br />
-          <span className="text-white">SUCCESS</span>
+          <span className="text-white">SUCCESS-</span>
         </motion.h1>
 
         {/* Subheading */}

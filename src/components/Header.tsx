@@ -8,11 +8,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: 'Home', path: '/' },           // 👈 زر Home مضاف
+    { label: 'Home', path: '/' },           
     { label: 'About Us', path: '/about' },
     { label: 'Services', path: '/services' },
     { label: 'Solutions', path: '/solution-details' },
-    { label: 'Partners', path: '/partners' },
+    // { label: 'Partners', path: '/partners' },  // 👈 تم إزالة هذا الزر
     { label: 'Contact Us', path: '/contact' },
   ];
 
