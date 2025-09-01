@@ -8,9 +8,10 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
+    { label: 'Home', path: '/' },           // 👈 زر Home مضاف
     { label: 'About Us', path: '/about' },
     { label: 'Services', path: '/services' },
-    { label: 'Solutions', path: '/solution-details' }, // الرابط الجديد والواضح
+    { label: 'Solutions', path: '/solution-details' },
     { label: 'Partners', path: '/partners' },
     { label: 'Contact Us', path: '/contact' },
   ];
@@ -42,7 +43,11 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden ml-4">
           <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="w-6 h-6 text-[#851A18]" /> : <Menu className="w-6 h-6 text-[#851A18]" />}
+            {isOpen ? (
+              <X className="w-6 h-6 text-[#851A18]" />
+            ) : (
+              <Menu className="w-6 h-6 text-[#851A18]" />
+            )}
           </button>
         </div>
       </div>
