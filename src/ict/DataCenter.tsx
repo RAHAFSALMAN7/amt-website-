@@ -9,19 +9,19 @@ const DataCenter: React.FC = () => {
       icon: <Server className="w-8 h-8" />,
       title: "Simplify and Automate IT Operations",
       desc: "AMT can deliver for its clients, based in Khobar or all the Kingdom of Saudi Arabia, a consistent and cloud-like operational experience across every domain of the enterprise network.",
-      img: "/images/datacenter.png",
+      img: "/images/Simplify.png",
     },
     {
       icon: <Zap className="w-8 h-8" />,
       title: "Accelerate Service Delivery",
       desc: "AMT is offering a new network orchestration solution that solves the problems faced by data center and IT administrators who often struggle with manual and siloed activities for IT service provisioning across compute, virtualization, storage, and network infrastructure environments.",
-      img: "/images/data_center_modernization.png",
+      img: "/images/Accelerate_ServiceDelivery.png",
     },
     {
       icon: <Layers className="w-8 h-8" />,
       title: "Integrate with Industry Leaders",
       desc: "AMT helps server and storage customers seamlessly extend connectivity to their solutions, to deliver a consistent user experience and operating model. Integrations with ecosystem partners span a wide range of computing, storage, HCI, and cloud offerings.",
-      img: "/images/data_center_mode.png",
+      img: "/images/Integrate2.png",
     },
   ];
 
@@ -55,7 +55,7 @@ const DataCenter: React.FC = () => {
         </motion.p>
 
         <motion.img
-          src="/images/datacenter.png"
+          src="/images/DATA_CENTER.png"
           alt="Data Center"
           initial={{ scale: 0.8, x: -100, opacity: 0 }}
           animate={{ scale: 1, x: 0, opacity: 1 }}
@@ -82,17 +82,18 @@ const DataCenter: React.FC = () => {
         {features.map((f, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: i * 0.2 }}
-            className="p-8 rounded-2xl shadow-lg bg-white hover:shadow-2xl transition-all duration-300"
+            className="p-6 rounded-2xl shadow-lg bg-white hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center"
+            style={{ minHeight: "550px" }} // ضبط ارتفاع موحد
           >
-            <div className="flex items-center justify-center w-14 h-14 rounded-full bg-[#851A18] text-white mb-6 mx-auto">
+            <div className="flex items-center justify-center w-14 h-14 rounded-full bg-[#851A18] text-white mb-6">
               {f.icon}
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-center text-[#851A18]">{f.title}</h3>
-            <p className="text-center text-[#292929]">{f.desc}</p>
+            <h3 className="text-2xl font-bold mb-4 text-[#851A18]">{f.title}</h3>
+            <p className="text-[#292929] flex-1">{f.desc}</p>
             <img
               src={f.img}
               alt={f.title}

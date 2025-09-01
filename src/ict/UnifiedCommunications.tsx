@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const UnifiedCommunications: React.FC = () => {
   const sections = [
@@ -6,12 +7,12 @@ const UnifiedCommunications: React.FC = () => {
       title: "Unified Communications",
       text: `AMT provides comprehensive Unified Communications solutions to integrate all your business communication channels seamlessly. 
       From VoIP, video conferencing, messaging, and collaboration tools, we help you streamline communication across your organization.`,
-      images: ["/images/unified-communication-UC-AMT-Khobar-KSA.png"],
+      images: ["/images/Unifie.png"],
     },
     {
       title: "Reliable & Secure Network",
       text: `Behind every successful organization is a fast, reliable, and secure network.`,
-      images: [],
+      images: ["/images/unifie2.png"],
     },
     {
       title: "About Unified Communications",
@@ -45,18 +46,45 @@ const UnifiedCommunications: React.FC = () => {
     <section className="bg-white min-h-screen px-6 md:px-28 py-20 space-y-20">
       <div className="max-w-5xl mx-auto space-y-16">
         {sections.map((section, idx) => (
-          <div key={idx} className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#851A18]">
+          <motion.div
+            key={idx}
+            className="space-y-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: idx * 0.2 }}
+          >
+            <motion.h2
+              className="text-3xl md:text-4xl font-extrabold text-[#851A18]"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               {section.title}
-            </h2>
-            <p className="text-[#292929] text-lg md:text-xl leading-relaxed">
+            </motion.h2>
+
+            <motion.p
+              className="text-[#292929] text-lg md:text-xl leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               {section.text}
-            </p>
-            
+            </motion.p>
+
             {section.images.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {section.images.map((img, i) => (
-                  <div key={i} className="relative overflow-hidden rounded-lg shadow-lg">
+                  <motion.div
+                    key={i}
+                    className="relative overflow-hidden rounded-lg shadow-lg"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
                     {/* الظل الأحمر */}
                     <div className="absolute inset-0 bg-red-600 opacity-30 z-10"></div>
                     <img
@@ -64,11 +92,11 @@ const UnifiedCommunications: React.FC = () => {
                       alt={section.title}
                       className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105 relative z-0"
                     />
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

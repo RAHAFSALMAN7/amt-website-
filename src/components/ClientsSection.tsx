@@ -19,14 +19,17 @@ const ClientsSection = () => {
 
   // Clients slider
   const [currentIndex, setCurrentIndex] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => prev + 3 >= clients.length ? 0 : prev + 3);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [clients.length]);
   const totalPages = Math.ceil(clients.length / 3);
   const currentPage = Math.floor(currentIndex / 3);
+
+  const nextClients = () => setCurrentIndex(prev => prev + 3 >= clients.length ? 0 : prev + 3);
+  const prevClients = () => setCurrentIndex(prev => prev === 0 ? clients.length - 3 : prev - 3);
+
+  // Auto slide for clients
+  useEffect(() => {
+    const interval = setInterval(nextClients, 3000);
+    return () => clearInterval(interval);
+  }, [clients.length]);
 
   // Testimonials slider
   const [testimonialIndex, setTestimonialIndex] = useState(0);
@@ -47,6 +50,15 @@ const ClientsSection = () => {
       {/* Clients Section */}
       <h2 className="text-3xl md:text-4xl font-bold mb-12">Our Major Clients</h2>
       <div className="w-full max-w-5xl flex justify-center relative overflow-hidden">
+
+        {/* Left Arrow */}
+        <button
+          onClick={prevClients}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow bg-white"
+        >
+          <ChevronLeft size={32} />
+        </button>
+
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
@@ -63,7 +75,16 @@ const ClientsSection = () => {
             ))}
           </motion.div>
         </AnimatePresence>
+
+        {/* Right Arrow */}
+        <button
+          onClick={nextClients}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow bg-white"
+        >
+          <ChevronRight size={32} />
+        </button>
       </div>
+
       <div className="flex mt-6 gap-2">
         {Array.from({ length: totalPages }).map((_, idx) => (
           <span key={idx} className={`w-3 h-3 rounded-full ${idx === currentPage ? "bg-red-600" : "bg-gray-400"}`}></span>
