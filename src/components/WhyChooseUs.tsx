@@ -82,11 +82,17 @@ const WhyChooseUs = () => {
                     className="relative w-52"
                   >
                     {/* البطاقة */}
-                    <div className="bg-white text-black px-8 py-6 rounded-3xl shadow-lg hover:scale-105 transition-transform text-center cursor-pointer font-semibold leading-snug">
+                    <div
+                      className={`px-8 py-6 rounded-3xl shadow-lg hover:scale-105 transition-transform text-center cursor-pointer font-semibold leading-snug
+                        ${["Transparency", "Commitment & accountability", "Teamwork"].includes(item.title)
+                          ? "text-[#292929] bg-white"
+                          : "text-black bg-white"
+                        }`}
+                    >
                       {item.title}
                     </div>
 
-                    {/* Tooltip أسود عائم */}
+                    {/* Tooltip باللون الرمادي الغامق */}
                     <AnimatePresence>
                       {hoveredIndex === startIndex + idx && (
                         <motion.div
@@ -94,7 +100,7 @@ const WhyChooseUs = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.3 }}
-                          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-64 bg-black text-white text-sm p-3 rounded-lg shadow-lg z-50"
+                          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 w-64 bg-[#292929] text-white text-sm p-3 rounded-lg shadow-lg z-50"
                         >
                           {item.desc}
                         </motion.div>
@@ -114,7 +120,7 @@ const WhyChooseUs = () => {
 
       {/* Video Section */}
       <div className="mt-32 w-full max-w-6xl rounded-3xl overflow-hidden shadow-lg bg-white">
-        <h3 className="text-2xl md:text-3xl font-bold text-[#080844] text-center mb-8">
+        <h3 className="text-2xl md:text-3xl font-bold text-[#851A1A] text-center mb-8">
           Get to Know More About AMT
         </h3>
 

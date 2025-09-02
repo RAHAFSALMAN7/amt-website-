@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import ClientsSection from './components/ClientsSection';
 import LatestNews from './components/LatestNews';
 import NewsDetails from './pages/NewsDetails';
+import ScrollToTop from './components/ScrollToTop'; // ✅ استدعاء الكومبوننت الجديد
 
 // صفحات السكشنات (ICT)
 import DataNetwork from './ict/DataNetwork';
@@ -43,7 +44,8 @@ import OSP_Solutions from './OSP_Solutions/OSP_Solutions';
 const App: React.FC = () => {
   return (
     <Router>
-<div className="min-h-screen bg-white text-dark-blue overflow-x-hidden font-body">
+      <ScrollToTop /> {/* ✅ الكومبوننت هون */}
+      <div className="min-h-screen bg-white text-dark-blue overflow-x-hidden font-body">
         <Header />
 
         <Routes>

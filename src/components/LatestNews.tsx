@@ -62,9 +62,11 @@ const LatestNews: React.FC = () => {
       <h2 className="text-2xl md:text-3xl font-bold mb-8">Latest News</h2>
 
       <div className="max-w-6xl mx-auto relative flex items-center">
+        {/* Left Arrow */}
         <button
           onClick={prevNews}
-          className="absolute -left-6 z-10 text-white p-2 hover:opacity-80 rounded-full bg-black/40"
+          className="absolute top-1/2 -translate-y-1/2 z-10 text-white p-2 hover:opacity-80 rounded-full bg-black/40
+                     left-0 sm:-left-4 md:-left-12 lg:-left-16"
         >
           <ChevronLeft size={28} />
         </button>
@@ -103,9 +105,11 @@ const LatestNews: React.FC = () => {
           </motion.div>
         </AnimatePresence>
 
+        {/* Right Arrow */}
         <button
           onClick={nextNews}
-          className="absolute -right-6 z-10 text-white p-2 hover:opacity-80 rounded-full bg-black/40"
+          className="absolute top-1/2 -translate-y-1/2 z-10 text-white p-2 hover:opacity-80 rounded-full bg-black/40
+                     right-0 sm:-right-4 md:-right-12 lg:-right-16"
         >
           <ChevronRight size={28} />
         </button>
@@ -129,4 +133,3 @@ const LatestNews: React.FC = () => {
 export default LatestNews;
 export type { NewsItem };
 export { newsData };
-

@@ -1,4 +1,5 @@
 import React from "react";
+import FlyingPosters from './FlyingPosters'
 
 export default function AboutUsPage() {
   const values = [

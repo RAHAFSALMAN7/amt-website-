@@ -58,14 +58,14 @@ const ClientsSection = () => {
       style={{ backgroundColor: "#FFFFFF" }}
     >
       {/* Clients Section */}
-      <h2 className="text-3xl md:text-4xl font-bold mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-[#851A1A]">
         Our Major Clients
       </h2>
       <div className="w-full max-w-5xl flex justify-center relative overflow-hidden">
         {/* Left Arrow */}
         <button
           onClick={prevClients}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-[#851A1A] p-2 hover:opacity-80 rounded-full shadow"
           style={{ backgroundColor: "#FFFFFF" }}
         >
           <ChevronLeft size={32} />
@@ -99,7 +99,7 @@ const ClientsSection = () => {
         {/* Right Arrow */}
         <button
           onClick={nextClients}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-[#851A1A] p-2 hover:opacity-80 rounded-full shadow"
           style={{ backgroundColor: "#FFFFFF" }}
         >
           <ChevronRight size={32} />
@@ -111,14 +111,14 @@ const ClientsSection = () => {
           <span
             key={idx}
             className={`w-3 h-3 rounded-full ${
-              idx === currentPage ? "bg-red-600" : "bg-gray-400"
+              idx === currentPage ? "bg-[#851A1A]" : "bg-gray-400"
             }`}
           ></span>
         ))}
       </div>
 
       {/* Testimonials Section */}
-      <h2 className="text-3xl md:text-4xl font-bold mt-32 mb-12 border-b-2 border-white">
+      <h2 className="text-3xl md:text-4xl font-bold mt-32 mb-12 border-b-2 border-[#851A1A] text-[#851A1A]">
         Testimonials
       </h2>
       <div
@@ -128,7 +128,7 @@ const ClientsSection = () => {
         {/* Left Arrow */}
         <button
           onClick={prevTestimonial}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 hover:opacity-80 rounded-full shadow"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-[#851A1A] p-2 hover:opacity-80 rounded-full shadow"
         >
           <ChevronLeft size={32} />
         </button>
@@ -157,13 +157,13 @@ const ClientsSection = () => {
               className="rounded-xl p-6 shadow-md"
               style={{ backgroundColor: "#FFFFFF" }}
             >
-              <p className="text-lg md:text-xl italic">
+              <p className="text-lg md:text-xl italic text-[#851A1A]">
                 "{clients[testimonialIndex].testimonial}"
               </p>
-              <span className="font-semibold mt-2 block">
+              <span className="font-semibold mt-2 block text-[#851A1A]">
                 {clients[testimonialIndex].name}
               </span>
-              <span className="text-gray-500 block">
+              <span className="block text-[#851A1A]">
                 {clients[testimonialIndex].position}
               </span>
             </div>
@@ -173,7 +173,7 @@ const ClientsSection = () => {
         {/* Right Arrow */}
         <button
           onClick={nextTestimonial}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 hover:opacity-80 rounded-full shadow"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-[#851A1A] p-2 hover:opacity-80 rounded-full shadow"
         >
           <ChevronRight size={32} />
         </button>
