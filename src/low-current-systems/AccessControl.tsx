@@ -18,7 +18,7 @@ const AccessControl: React.FC = () => {
         viewport={{ once: true }}
       >
         <img
-          src="/images/Access_control.png"
+          src="/images/num55.png"
           alt="Access Control Systems"
           className="w-full h-auto object-cover rounded-lg shadow-md"
         />

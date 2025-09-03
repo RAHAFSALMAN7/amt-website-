@@ -17,7 +17,7 @@ const FireAlarm: React.FC = () => {
         transition={{ duration: 0.8 }}
       >
         <img
-          src="/images/fire_alarm.png"
+          src="/images/num22.png"
           alt="Fire Alarm"
           className="w-full max-w-3xl object-contain rounded-lg"
         />

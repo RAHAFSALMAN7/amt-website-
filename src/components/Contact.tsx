@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ElectricBorder from "./ElectricBorder"; // استدعاء الكومبوننت
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,9 +12,10 @@ const Contact: React.FC = () => {
 
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // تعديل: تحديد نوع e لتجنب تحذير TypeScript
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -51,86 +53,87 @@ const Contact: React.FC = () => {
           <h2 className="text-white text-3xl font-bold">contact us</h2>
         </div>
 
-        {/* الفورم */}
-        <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl p-10">
-          <h3 className="text-[#292929] text-2xl font-semibold mb-8">
-            Get in touch
-          </h3>
+        {/* الفورم مع البوردر الكهربائي */}
+        <ElectricBorder color="#EA7946" speed={2} chaos={0.8} thickness={3} style={{ borderRadius: 16 }}>
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl p-10">
+            <h3 className="text-[#292929] text-2xl font-semibold mb-8">
+              Get in touch
+            </h3>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="flex flex-col md:flex-row gap-6">
-              <input
-                type="text"
-                name="company"
-                placeholder="Company Name *"
-                required
-                value={formData.company}
-                onChange={handleChange}
-                className="w-full p-4 border rounded text-base"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email *"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-4 border rounded text-base"
-              />
-            </div>
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="flex flex-col md:flex-row gap-6">
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="Company Name *"
+                  required
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full p-4 border rounded text-base"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email *"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full p-4 border rounded text-base"
+                />
+              </div>
 
-            <div className="flex flex-col md:flex-row gap-6">
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject *"
+              <div className="flex flex-col md:flex-row gap-6">
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Subject *"
+                  required
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full p-4 border rounded text-base"
+                />
+                <select
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  className="w-full p-4 border rounded text-base"
+                >
+                  <option value="">Budget *</option>
+                  <option value="100-500">$100-$500</option>
+                  <option value="500-1000">$500-$1000</option>
+                  <option value="1000+">$1000+</option>
+                </select>
+              </div>
+
+              <textarea
+                name="message"
+                placeholder="Message *"
                 required
-                value={formData.subject}
+                value={formData.message}
                 onChange={handleChange}
-                className="w-full p-4 border rounded text-base"
+                className="w-full p-4 border rounded h-48 resize-none text-base"
               />
-              <select
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full p-4 border rounded text-base"
+
+              <button
+                type="submit"
+                className="bg-[#851A18] text-white px-8 py-3 rounded font-semibold text-base hover:bg-[#a21f1c] transition-colors"
               >
-                <option value="">Budget *</option>
-                <option value="100-500">$100-$500</option>
-                <option value="500-1000">$500-$1000</option>
-                <option value="1000+">$1000+</option>
-              </select>
-            </div>
-
-            <textarea
-              name="message"
-              placeholder="Message *"
-              required
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full p-4 border rounded h-48 resize-none text-base"
-            />
-
-            <button
-              type="submit"
-              className="bg-[#851A18] text-white px-8 py-3 rounded font-semibold text-base hover:bg-[#a21f1c] transition-colors"
-            >
-              get in touch
-            </button>
-          </form>
-        </div>
+                get in touch
+              </button>
+            </form>
+          </div>
+        </ElectricBorder>
       </div>
 
-      {/* النص فوق الخريطة مع ظل أحمر شفاف */}
+      {/* النص فوق الخريطة */}
       <div className="relative w-full flex justify-center mt-12 z-10">
-        {/* الظل الأحمر */}
         <div className="absolute inset-0 bg-red-500/20"></div>
         <p className="text-white text-3xl font-bold relative z-20">
           our location
         </p>
       </div>
 
-      {/* الخريطة Full Width مع Parallax */}
+      {/* الخريطة */}
       <div
         className="w-full h-[400px]"
         style={{

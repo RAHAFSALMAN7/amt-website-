@@ -56,8 +56,7 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
         >
-          Our Solutions
-        </motion.h2>
+         </motion.h2>
       </div>
     </section>
   );

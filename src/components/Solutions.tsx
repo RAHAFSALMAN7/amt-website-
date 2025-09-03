@@ -4,6 +4,7 @@ import CircularGallery from "./CircularGallery";
 import ElectricBorder from "./ElectricBorder";
 
 const Solutions = () => {
+
   const solutionBoxes = [
     { title: "AMT data network solutions", img: "/images/herosec1.png" },
     { title: "Low Current Systems", img: "/images/herosec2.png" },
@@ -12,22 +13,41 @@ const Solutions = () => {
 
   const gallery = {
     main: {
-      img: "/images/big.png",
+      img: "/images/big2.png",
       label: "ICT Networking",
       button: "VIEW SOLUTIONS",
     },
     others: [
-      { img: "/images/num2.png", label: "Fire Alarm Solutions" },
-      { img: "/images/242.png", label: "IPTV Solutions" },
-      { img: "/images/num3.png", label: "Access Control" },
-      { img: "/images/num4.png", label: "OSP Solutions" },
+      { img: "/images/num22.png", label: "Fire Alarm Solutions" },
+      { img: "/images/num33.png", label: "IPTV Solutions" },
+      { img: "/images/num55.png", label: "Access Control" },
+      { img: "/images/num44.png", label: "OSP Solutions" },
     ],
   };
 
   return (
     <>
-      {/* سكشن المربعات الثلاثة الكبيرة مع ElectricBorder */}
-      <section className="bg-white relative px-6 md:px-28 pb-32 pt-16">
+      {/* عنوان Our Solution مع كابشن */}
+      <section className="bg-white px-6 md:px-28 pt-16">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "#851A1A" }}>
+            Our Solution
+          </h2>
+          <motion.p
+            className="mt-4 text-lg md:text-xl"
+            style={{ color: "#6d6a6aff" }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            Discover the innovative solutions we provide to empower your business and technology needs. 
+            From cutting-edge network systems to advanced audio-visual integrations, 
+            our expert team ensures seamless implementation and unmatched support, 
+            helping your organization stay ahead in a fast-evolving digital world.
+          </motion.p>
+        </div>
+
+        {/* سكشن المربعات الثلاثة الكبيرة مع ElectricBorder */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-10">
           {solutionBoxes.map((box, idx) => (
             <ElectricBorder
