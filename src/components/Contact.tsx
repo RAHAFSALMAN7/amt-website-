@@ -54,7 +54,13 @@ const Contact: React.FC = () => {
         </div>
 
         {/* الفورم مع البوردر الكهربائي */}
-        <ElectricBorder color="#EA7946" speed={2} chaos={0.8} thickness={3} style={{ borderRadius: 16 }}>
+        <ElectricBorder
+          color="#EA7946"
+          speed={2}
+          chaos={0.8}
+          thickness={3}
+          style={{ borderRadius: 16 }}
+        >
           <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl p-10">
             <h3 className="text-[#292929] text-2xl font-semibold mb-8">
               Get in touch
@@ -92,17 +98,15 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   className="w-full p-4 border rounded text-base"
                 />
-                <select
+                <input
+                  type="text"
                   name="budget"
+                  placeholder="Budget *"
+                  required
                   value={formData.budget}
                   onChange={handleChange}
                   className="w-full p-4 border rounded text-base"
-                >
-                  <option value="">Budget *</option>
-                  <option value="100-500">$100-$500</option>
-                  <option value="500-1000">$500-$1000</option>
-                  <option value="1000+">$1000+</option>
-                </select>
+                />
               </div>
 
               <textarea

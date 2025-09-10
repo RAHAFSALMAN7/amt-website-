@@ -3,12 +3,11 @@ import { motion } from "framer-motion";
 import CircularGallery from "./CircularGallery";
 import ElectricBorder from "./ElectricBorder";
 
-const Solutions = () => {
-
+const Solutions: React.FC = () => {
   const solutionBoxes = [
-    { title: "AMT data network solutions", img: "/images/herosec1.png" },
+    { title: "Data Network Solutions", img: "/images/datanetwork.png" },
     { title: "Low Current Systems", img: "/images/herosec2.png" },
-    { title: "AMT audio visual systems", img: "/images/2150038862.png" },
+    { title: "Audio Visual Systems", img: "/images/audisystem.png" },
   ];
 
   const gallery = {
@@ -25,6 +24,12 @@ const Solutions = () => {
     ],
   };
 
+  // جميع العناصر للمعرض
+  const allItems = [
+    { image: gallery.main.img, text: gallery.main.label },
+    ...gallery.others.map((item) => ({ image: item.img, text: item.label })),
+  ];
+
   return (
     <>
       {/* عنوان Our Solution مع كابشن */}
@@ -40,10 +45,11 @@ const Solutions = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            Discover the innovative solutions we provide to empower your business and technology needs. 
-            From cutting-edge network systems to advanced audio-visual integrations, 
-            our expert team ensures seamless implementation and unmatched support, 
-            helping your organization stay ahead in a fast-evolving digital world.
+            Discover the innovative solutions we provide to empower your business
+            and technology needs. From cutting-edge network systems to advanced
+            audio-visual integrations, our expert team ensures seamless
+            implementation and unmatched support, helping your organization stay
+            ahead in a fast-evolving digital world.
           </motion.p>
         </div>
 
@@ -85,14 +91,9 @@ const Solutions = () => {
           </h2>
         </div>
         <div style={{ height: "600px", position: "relative" }}>
+          {/* ⚡ هنا مررنا props لـ CircularGallery بشكل صحيح */}
           <CircularGallery
-            items={[
-              { image: gallery.main.img, text: gallery.main.label },
-              ...gallery.others.map(item => ({
-                image: item.img,
-                text: item.label,
-              })),
-            ]}
+            items={allItems}
             bend={3}
             textColor="#851A1A"
             borderRadius={0.05}

@@ -16,9 +16,10 @@ const Footer = () => {
       bottom: ['Privacy Policy', 'Terms of Service', 'Cookie Policy'],
       copyright: '© 2025 Advanced Micro Technologies. All rights reserved.',
       officeHoursTitle: 'Office Hours',
-      officeHoursTime: ['Sunday-Thursday : 8 AM - 5:30 PM', 'Friday & Saturday : Closed'],
+      officeHoursTime: ['Sunday-Thursday : 8 AM - 6:30 PM', 'Friday & Saturday : Closed'],
       contactUsTitle: 'Contact Us',
       mapTitle: 'Our Location',
+      parkingTitle: 'Parking Location',
     },
     ar: {
       bottom: ['سياسة الخصوصية', 'شروط الخدمة', 'سياسة ملفات الارتباط'],
@@ -27,15 +28,16 @@ const Footer = () => {
       officeHoursTime: ['الأحد - الخميس : 8 صباحًا - 5:30 مساءً', 'الجمعة والسبت : مغلق'],
       contactUsTitle: 'تواصل معنا',
       mapTitle: 'الموقع',
+      parkingTitle: 'موقف السيارات',
     },
   };
 
   const t = translations[language];
 
   const socialLinks = [
-    { icon: Linkedin, label: 'LinkedIn' },
-    { icon: Twitter, label: 'Twitter' },
-    { icon: Github, label: 'GitHub' },
+    { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/company/amt-arabia/posts/?feedView=all' },
+    { icon: Twitter, label: 'Twitter', url: '#' },
+    { icon: Github, label: 'GitHub', url: '#' },
   ];
 
   return (
@@ -96,24 +98,47 @@ const Footer = () => {
             {socialLinks.map((social, i) => {
               const Icon = social.icon;
               return (
-                <div
+                <a
                   key={i}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer"
                   title={social.label}
                 >
                   <Icon className="w-5 h-5 text-[#851A18]" />
-                </div>
+                </a>
               );
             })}
           </div>
         </div>
 
-        {/* Map */}
+        {/* Maps */}
         <div className="flex flex-col items-start mt-6 lg:mt-0 text-left">
+          {/* Main Location */}
           <span className="font-semibold mb-3 text-lg">{t.mapTitle}</span>
           <iframe
             onClick={() => setMapExpanded(!mapExpanded)}
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.0388390304133!2d50.182273099999996!3d26.292840899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49ef5d1bf00919%3A0xcad792212a73a548!2sAdvanced%20Micro%20Technologies%20Co.%20AMT%20arabia!5e0!3m2!1sen!2s!4v1756469840100!5m2!1sen!2s"
+            width={mapExpanded ? 600 : 220}
+            height={mapExpanded ? 400 : 220}
+            style={{
+              borderRadius: mapExpanded ? '0%' : '12px',
+              border: '0',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease-in-out',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+            }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+          {/* Parking Location */}
+          <span className="font-semibold mb-3 text-lg mt-6">{t.parkingTitle}</span>
+          <iframe
+            onClick={() => setMapExpanded(!mapExpanded)}
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3576.977515060167!2d50.1799011!3d26.293211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49ef5e6d6ac8d3%3A0x0!2zMjbCsDE3JzM1LjYiTiA1MMKwMTAnNTYuOSJF!5e0!3m2!1sen!2s!4v1757479999999!5m2!1sen!2s"
             width={mapExpanded ? 600 : 220}
             height={mapExpanded ? 400 : 220}
             style={{

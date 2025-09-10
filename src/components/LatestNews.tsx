@@ -17,7 +17,7 @@ const newsData: NewsItem[] = [
   {
     id: 1,
     image: '/images/اليوم السعودي.png',
-    title: '𝐇𝐚𝐩𝐩𝐲 𝟗5𝐬𝐭 𝐒𝐚𝐮𝐝𝐢 𝐍𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐃𝐚𝐲',
+    title: '𝐇𝐚𝐩𝐩𝐲 𝟗1𝐬𝐭 𝐒𝐚𝐮𝐝𝐢 𝐍𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐃𝐚𝐲',
     description: 'Congratulations to the Kingdom’s leadership and people on this special day.',
     fullText:
       'Congratulations to the Kingdom’s leadership and people on this special day. Here you can expand with more details, photos, and reflections about the Saudi National Day celebration.',

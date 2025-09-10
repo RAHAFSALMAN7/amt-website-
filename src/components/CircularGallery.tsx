@@ -1,5 +1,5 @@
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'ogl';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
 type GL = Renderer['gl'];
 
@@ -643,8 +643,7 @@ class App {
     }
   }
 }
-
-interface CircularGalleryProps {
+ interface CircularGalleryProps {
   items?: { image: string; text: string }[];
   bend?: number;
   textColor?: string;
@@ -657,13 +656,16 @@ interface CircularGalleryProps {
 export default function CircularGallery({
   items,
   bend = 3,
-  textColor = '#ffffff',
+  textColor = "#ffffff",
   borderRadius = 0.05,
-  font = 'bold 30px Figtree',
+  font = "bold 30px Figtree",
   scrollSpeed = 2,
-  scrollEase = 0.05
+  scrollEase = 0.05,
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const appRef = useRef<any>(null); // نخزن الـ App هنا
+  const [ready, setReady] = useState(false);
+
   useEffect(() => {
     if (!containerRef.current) return;
     const app = new App(containerRef.current, {
@@ -673,11 +675,51 @@ export default function CircularGallery({
       borderRadius,
       font,
       scrollSpeed,
-      scrollEase
+      scrollEase,
     });
+    appRef.current = app;
+    setReady(true);
+
     return () => {
       app.destroy();
+      appRef.current = null;
+      setReady(false);
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
-  return <div className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef} />;
+
+  return (
+    <div className="relative w-full h-full overflow-hidden">
+      <div
+        ref={containerRef}
+        className="w-full h-full cursor-grab active:cursor-grabbing"
+      />
+
+      {/* أسهم التنقل */}
+      {ready && (
+        <>
+          <button
+            onClick={() => {
+              if (appRef.current) {
+                appRef.current.scroll.target -= 40; // المسافة لليسار
+              }
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+          >
+            ◀
+          </button>
+
+          <button
+            onClick={() => {
+              if (appRef.current) {
+                appRef.current.scroll.target += 40; // المسافة لليمين
+              }
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+          >
+            ▶
+          </button>
+        </>
+      )}
+    </div>
+  );
 }
