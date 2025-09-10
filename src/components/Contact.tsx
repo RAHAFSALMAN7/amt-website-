@@ -53,14 +53,15 @@ const Contact: React.FC = () => {
           <h2 className="text-white text-3xl font-bold">contact us</h2>
         </div>
 
-        {/* الفورم مع البوردر الكهربائي */}
         <ElectricBorder
-          color="#EA7946"
-          speed={2}
-          chaos={0.8}
-          thickness={3}
-          style={{ borderRadius: 16 }}
-        >
+  color="#FF0000"   // 🔴 أحمر صريح
+  speed={2}
+  chaos={0.8}
+  thickness={3}
+  style={{ borderRadius: 16 }}
+>
+
+
           <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl p-10">
             <h3 className="text-[#292929] text-2xl font-semibold mb-8">
               Get in touch
