@@ -119,20 +119,21 @@ const WhyChooseUs = () => {
       </div>
 
       {/* Video Section */}
-      <div className="mt-32 w-full max-w-6xl rounded-3xl overflow-hidden shadow-lg bg-white">
-        <h3 className="text-2xl md:text-3xl font-bold text-[#851A1A] text-center mb-8">
-          Get to Know More About AMT
-        </h3>
+<div className="mt-32 w-full max-w-6xl rounded-3xl overflow-hidden shadow-lg bg-black p-4">
+  <h3 className="text-2xl md:text-3xl font-bold text-[#851A1A] text-center mb-8 bg-white py-4 rounded-xl">
+    Get to Know More About AMT
+  </h3>
 
-        <video
-          src="https://res.cloudinary.com/diroi6tnk/video/upload/v1756645983/AMT_LONG_VIDEO_sfx_edited_1_1_nkseiy.mp4"
-          controls
-          autoPlay
-          loop
-          muted
-          className="w-full h-80 md:h-[600px] object-cover rounded-xl bg-white"
-        />
-      </div>
+  <video
+    src="https://res.cloudinary.com/diroi6tnk/video/upload/v1756645983/AMT_LONG_VIDEO_sfx_edited_1_1_nkseiy.mp4"
+    controls
+    autoPlay
+    loop
+    muted
+    className="w-full h-80 md:h-[600px] object-cover rounded-xl"
+  />
+</div>
+
     </section>
   );
 };
