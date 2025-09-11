@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="relative w-full min-h-[80vh] md:min-h-screen overflow-hidden px-4 sm:px-6 md:px-20">
+    <section className="relative w-full overflow-hidden px-4 sm:px-6 md:px-20">
+
       {/* Video Background */}
       <video
         src="https://res.cloudinary.com/diroi6tnk/video/upload/v1756381893/Untitled_design_1_1_bhpahu.mp4"
@@ -21,14 +22,13 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
 
       {/* Text Content */}
-      <div className="absolute left-4 sm:left-6 md:left-20 z-10
+      <div className="absolute z-10 left-4 sm:left-6 md:left-20
                       top-1/4 sm:top-1/4 md:top-1/3
-                      max-w-full sm:max-w-xl md:max-w-2xl
-                      text-left">
+                      max-w-full sm:max-w-xl md:max-w-2xl text-left">
 
         {/* Main Heading */}
         <motion.h1
-          className="text-xl sm:text-2xl md:text-5xl lg:text-7xl font-bold text-white leading-snug sm:leading-snug md:leading-tight mb-3 sm:mb-4 md:mb-6"
+          className="text-lg xs:text-xl sm:text-2xl md:text-5xl lg:text-7xl font-bold text-white leading-snug sm:leading-snug md:leading-tight mb-3 sm:mb-4 md:mb-6"
           initial={{ opacity: 0, x: -80, scale: 0.9 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -39,7 +39,7 @@ const Hero = () => {
 
         {/* Subheading */}
         <motion.p
-          className="text-[10px] xs:text-xs sm:text-sm md:text-lg lg:text-xl text-white/90 mb-4 sm:mb-6 md:mb-8 leading-snug sm:leading-relaxed md:leading-relaxed"
+          className="text-[9px] xs:text-[10px] sm:text-sm md:text-lg lg:text-xl text-white/90 mb-4 sm:mb-6 md:mb-8 leading-snug sm:leading-relaxed md:leading-relaxed"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
@@ -58,6 +58,18 @@ const Hero = () => {
           Learn More
         </motion.button>
       </div>
+
+      {/* Section Height Adjust */}
+      <style jsx>{`
+        section {
+          height: 80vh; /* default للجوال */
+        }
+        @media (min-width: 768px) {
+          section {
+            height: 100vh; /* للشاشات الكبيرة */
+          }
+        }
+      `}</style>
     </section>
   );
 };
