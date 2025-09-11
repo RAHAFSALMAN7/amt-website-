@@ -11,6 +11,7 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // English translations only
   const translations = {
     en: {
       bottom: ['Privacy Policy', 'Terms of Service', 'Cookie Policy'],
@@ -21,18 +22,9 @@ const Footer = () => {
       mapTitle: 'Our Location',
       parkingTitle: 'Parking Location',
     },
-    ar: {
-      bottom: ['سياسة الخصوصية', 'شروط الخدمة', 'سياسة ملفات الارتباط'],
-      copyright: '© 2025 التقنية المتقدمة. جميع الحقوق محفوظة.',
-      officeHoursTitle: 'أوقات العمل',
-      officeHoursTime: ['الأحد - الخميس : 8 صباحًا - 5:30 مساءً', 'الجمعة والسبت : مغلق'],
-      contactUsTitle: 'تواصل معنا',
-      mapTitle: 'الموقع',
-      parkingTitle: 'موقف السيارات',
-    },
   };
 
-  const t = translations[language];
+  const t = translations['en'];
 
   const socialLinks = [
     { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/company/amt-arabia/posts/?feedView=all' },
@@ -138,7 +130,7 @@ const Footer = () => {
           <span className="font-semibold mb-3 text-lg mt-6">{t.parkingTitle}</span>
           <iframe
             onClick={() => setMapExpanded(!mapExpanded)}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3576.977515060167!2d50.1799011!3d26.293211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49ef5e6d6ac8d3%3A0x0!2zMjbCsDE3JzM1LjYiTiA1MMKwMTAnNTYuOSJF!5e0!3m2!1sen!2s!4v1757479999999!5m2!1sen!2s"
+            src="https://www.google.com/maps?q=26.293222,50.182472&hl=en&z=17&output=embed"
             width={mapExpanded ? 600 : 220}
             height={mapExpanded ? 400 : 220}
             style={{
