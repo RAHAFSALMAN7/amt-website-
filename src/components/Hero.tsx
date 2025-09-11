@@ -16,14 +16,18 @@ const Hero = () => {
         className="absolute top-0 left-0 w-full h-full object-cover object-center"
       />
 
-      {/* Overlay لتفتيح النص */}
+      {/* Overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
 
       {/* Text Content */}
-      <div className="absolute inset-x-4 sm:inset-x-6 md:inset-x-20 top-1/4 sm:top-1/4 md:top-1/3 max-w-full sm:max-w-xl md:max-w-2xl z-10 text-left">
+      <div className="absolute left-4 sm:left-6 md:left-20 z-10
+                      top-1/4 sm:top-1/4 md:top-1/3
+                      max-w-full sm:max-w-xl md:max-w-2xl
+                      text-left">
+
         {/* Main Heading */}
         <motion.h1
-          className="text-xl xs:text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-snug sm:leading-snug md:leading-tight mb-3 sm:mb-4 md:mb-6"
+          className="text-xl sm:text-2xl md:text-5xl lg:text-7xl font-bold text-white leading-snug sm:leading-snug md:leading-tight mb-3 sm:mb-4 md:mb-6"
           initial={{ opacity: 0, x: -80, scale: 0.9 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -45,7 +49,7 @@ const Hero = () => {
 
         {/* Button */}
         <motion.button
-          className="bg-white text-[#851A18] px-3 xs:px-4 sm:px-6 md:px-8 py-1.5 xs:py-2 sm:py-3 font-semibold shadow-md hover:scale-105 transition-transform mb-4 sm:mb-6"
+          className="bg-white text-[#851A18] px-3 xs:px-4 sm:px-6 md:px-8 py-1.5 xs:py-2 sm:py-3 font-semibold shadow-md hover:scale-105 transition-transform"
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
