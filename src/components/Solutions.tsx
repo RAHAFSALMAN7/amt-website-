@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import CircularGallery from "./CircularGallery";
 import ElectricBorder from "./ElectricBorder";
 
+// hook لحجم الشاشة
 const useWindowSize = () => {
   const [size, setSize] = useState({ width: 0, height: 0 });
+
   useEffect(() => {
     const updateSize = () =>
       setSize({ width: window.innerWidth, height: window.innerHeight });
@@ -13,6 +15,7 @@ const useWindowSize = () => {
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+
   return size;
 };
 
@@ -24,7 +27,11 @@ const Solutions: React.FC = () => {
   ];
 
   const gallery = {
-    main: { img: "/images/big2.png", label: "ICT Networking" },
+    main: {
+      img: "/images/big2.png",
+      label: "ICT Networking",
+      button: "VIEW SOLUTIONS",
+    },
     others: [
       { img: "/images/num22.png", label: "Fire Alarm Solutions" },
       { img: "/images/num33.png", label: "IPTV Solutions" },
@@ -39,11 +46,15 @@ const Solutions: React.FC = () => {
   ];
 
   const { width } = useWindowSize();
-  const isMobile = width < 768;
+
+  // إعدادات متجاوبة للـ CircularGallery
+  const scrollEase = width < 768 ? 0.005 : 0.02;
+  const galleryHeight = width < 768 ? 400 : width < 1024 ? 500 : 600;
+  const bend = width < 768 ? 1.5 : 3; // تقلل الانحناء على الموبايل
 
   return (
     <>
-      {/* Our Solution Section */}
+      {/* عنوان Our Solution مع كابشن */}
       <section className="bg-white px-4 sm:px-6 md:px-28 pt-16">
         <div className="text-center mb-10">
           <h2
@@ -67,7 +78,7 @@ const Solutions: React.FC = () => {
           </motion.p>
         </div>
 
-        {/* Solution Boxes */}
+        {/* سكشن المربعات الثلاثة الكبيرة مع ElectricBorder */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mt-10 justify-items-center">
           {solutionBoxes.map((box, idx) => (
             <ElectricBorder
@@ -97,7 +108,7 @@ const Solutions: React.FC = () => {
         </div>
       </section>
 
-      {/* CircularGallery Section */}
+      {/* سكشن CircularGallery مع عبارة Our most important services */}
       <section className="bg-white px-4 sm:px-6 md:px-28 py-20 md:py-32 relative overflow-hidden">
         <div className="mb-8 text-center">
           <h2
@@ -107,38 +118,18 @@ const Solutions: React.FC = () => {
             Our most important services
           </h2>
         </div>
-
-        {isMobile ? (
-          // نسخة الموبايل: scrollable horizontal gallery
-          <div className="flex overflow-x-auto space-x-4 py-4">
-            {allItems.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex-shrink-0 w-64 h-64 bg-[#fff] shadow-lg rounded-lg overflow-hidden"
-              >
-                <img
-                  src={item.image}
-                  alt={item.text}
-                  className="w-full h-3/4 object-cover"
-                />
-                <h3 className="text-center text-[#851A1A] font-bold mt-2 px-2">
-                  {item.text}
-                </h3>
-              </div>
-            ))}
-          </div>
-        ) : (
-          // نسخة الديسكتوب: circular gallery
-          <div className="w-full relative" style={{ height: 600 }}>
-            <CircularGallery
-              items={allItems}
-              bend={3}
-              textColor="#851A1A"
-              borderRadius={0.05}
-              scrollEase={0.02}
-            />
-          </div>
-        )}
+        <div
+          className="w-full relative"
+          style={{ height: galleryHeight }}
+        >
+          <CircularGallery
+            items={allItems}
+            bend={bend} // bend متغير حسب الشاشة
+            textColor="#851A1A"
+            borderRadius={0.05}
+            scrollEase={scrollEase}
+          />
+        </div>
       </section>
     </>
   );
