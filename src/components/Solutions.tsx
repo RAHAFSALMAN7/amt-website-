@@ -1,7 +1,23 @@
-import React from "react";
+// Solutions.tsx
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CircularGallery from "./CircularGallery";
 import ElectricBorder from "./ElectricBorder";
+
+// hook لحجم الشاشة
+const useWindowSize = () => {
+  const [size, setSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const updateSize = () =>
+      setSize({ width: window.innerWidth, height: window.innerHeight });
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  return size;
+};
 
 const Solutions: React.FC = () => {
   const solutionBoxes = [
@@ -24,37 +40,43 @@ const Solutions: React.FC = () => {
     ],
   };
 
-  // جميع العناصر للمعرض
   const allItems = [
     { image: gallery.main.img, text: gallery.main.label },
     ...gallery.others.map((item) => ({ image: item.img, text: item.label })),
   ];
 
+  // نجيب حجم الشاشة من الهُوك
+  const { width } = useWindowSize();
+  const scrollEase = width < 768 ? 0.005 : 0.02;
+
   return (
     <>
       {/* عنوان Our Solution مع كابشن */}
-      <section className="bg-white px-6 md:px-28 pt-16">
+      <section className="bg-white px-4 sm:px-6 md:px-28 pt-16">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "#851A1A" }}>
+          <h2
+            className="text-2xl sm:text-3xl md:text-4xl font-bold"
+            style={{ color: "#851A1A" }}
+          >
             Our Solution
           </h2>
           <motion.p
-            className="mt-4 text-lg md:text-xl"
+            className="mt-4 text-sm sm:text-base md:text-lg leading-relaxed"
             style={{ color: "#6d6a6aff" }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            Discover the innovative solutions we provide to empower your business
-            and technology needs. From cutting-edge network systems to advanced
-            audio-visual integrations, our expert team ensures seamless
+            Discover the innovative solutions we provide to empower your
+            business and technology needs. From cutting-edge network systems to
+            advanced audio-visual integrations, our expert team ensures seamless
             implementation and unmatched support, helping your organization stay
             ahead in a fast-evolving digital world.
           </motion.p>
         </div>
 
         {/* سكشن المربعات الثلاثة الكبيرة مع ElectricBorder */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mt-10 justify-items-center">
           {solutionBoxes.map((box, idx) => (
             <ElectricBorder
               key={idx}
@@ -65,16 +87,16 @@ const Solutions: React.FC = () => {
               style={{ borderRadius: 16 }}
             >
               <div
-                className="bg-[#851A18] w-80 md:w-96 aspect-square mx-auto flex flex-col 
-                           items-center justify-start shadow-lg transform transition-transform 
-                           duration-500 hover:scale-105 hover:-translate-y-3 overflow-hidden"
+                className="bg-[#851A18] w-full max-w-xs sm:max-w-sm md:max-w-md 
+                           aspect-[4/5] sm:aspect-square flex flex-col 
+                           items-center justify-start shadow-lg overflow-hidden"
               >
                 <img
                   src={box.img}
                   alt={box.title}
                   className="w-full h-3/4 object-cover"
                 />
-                <h3 className="text-white font-bold text-center text-lg md:text-xl mt-4 px-2">
+                <h3 className="text-white font-bold text-center text-base sm:text-lg md:text-xl mt-4 px-2">
                   {box.title}
                 </h3>
               </div>
@@ -84,20 +106,22 @@ const Solutions: React.FC = () => {
       </section>
 
       {/* سكشن CircularGallery مع عبارة Our most important services */}
-      <section className="bg-white px-6 md:px-28 py-32 relative overflow-hidden">
+      <section className="bg-white px-4 sm:px-6 md:px-28 py-20 md:py-32 relative overflow-hidden">
         <div className="mb-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "#851A1A" }}>
+          <h2
+            className="text-2xl sm:text-3xl md:text-4xl font-bold"
+            style={{ color: "#851A1A" }}
+          >
             Our most important services
           </h2>
         </div>
-        <div style={{ height: "600px", position: "relative" }}>
-          {/* ⚡ هنا مررنا props لـ CircularGallery بشكل صحيح */}
+        <div className="w-full h-[500px] sm:h-[550px] md:h-[600px] relative">
           <CircularGallery
             items={allItems}
             bend={3}
             textColor="#851A1A"
             borderRadius={0.05}
-            scrollEase={0.02}
+            scrollEase={scrollEase} // تقليل الحركة على الموبايل
           />
         </div>
       </section>
