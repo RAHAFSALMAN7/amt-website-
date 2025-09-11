@@ -115,7 +115,10 @@ const Solutions: React.FC = () => {
             Our most important services
           </h2>
         </div>
-        <div className="w-full h-[500px] sm:h-[550px] md:h-[600px] relative">
+        <div
+          className="w-full relative"
+          style={{ height: "60vh", minHeight: 400 }}
+        >
           <CircularGallery
             items={allItems}
             bend={3}
