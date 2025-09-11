@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="relative w-full overflow-hidden px-4 sm:px-6 md:px-20">
+    <section className="relative w-full overflow-hidden bg-red-600 px-4 sm:px-6 md:px-20">
 
       {/* Video Background */}
       <video
@@ -14,8 +14,7 @@ const Hero = () => {
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full
-                   object-contain md:object-cover object-center"
+        className="absolute top-0 left-0 w-full h-full object-contain md:object-cover object-center"
       />
 
       {/* Overlay */}
