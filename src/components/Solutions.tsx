@@ -45,9 +45,12 @@ const Solutions: React.FC = () => {
     ...gallery.others.map((item) => ({ image: item.img, text: item.label })),
   ];
 
-  // نجيب حجم الشاشة من الهُوك
   const { width } = useWindowSize();
+
+  // إعدادات متجاوبة للـ CircularGallery
   const scrollEase = width < 768 ? 0.005 : 0.02;
+  const galleryHeight = width < 768 ? 400 : width < 1024 ? 500 : 600;
+  const bend = width < 768 ? 1.5 : 3; // تقلل الانحناء على الموبايل
 
   return (
     <>
@@ -117,14 +120,14 @@ const Solutions: React.FC = () => {
         </div>
         <div
           className="w-full relative"
-          style={{ height: "60vh", minHeight: 400 }}
+          style={{ height: galleryHeight }}
         >
           <CircularGallery
             items={allItems}
-            bend={3}
+            bend={bend} // bend متغير حسب الشاشة
             textColor="#851A1A"
             borderRadius={0.05}
-            scrollEase={scrollEase} // تقليل الحركة على الموبايل
+            scrollEase={scrollEase}
           />
         </div>
       </section>
