@@ -8,12 +8,20 @@ const Hero = () => {
       {/* Video Background */}
       <video
         src="https://res.cloudinary.com/diroi6tnk/video/upload/v1756381893/Untitled_design_1_1_bhpahu.mp4"
-        poster="https://res.cloudinary.com/diroi6tnk/image/upload/v1756381893/hero-mobile.jpg" // صورة بديلة للهواتف
+        poster="https://res.cloudinary.com/diroi6tnk/image/upload/v1756381893/hero-mobile.jpg"
         autoPlay
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className="absolute top-0 left-0 w-full h-full
+                   object-cover
+                   md:object-cover
+                   object-center
+                   md:object-center"
+        style={{
+          // على الجوال نخلي الفيديو يظهر كاملًا بدون قص
+          objectFit: window.innerWidth < 768 ? "contain" : "cover",
+        }}
       />
 
       {/* Overlay لتفتيح النص */}
@@ -59,9 +67,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
-        >
-          {/* يمكنك إضافة نص إضافي هنا */}
-        </motion.h2>
+        ></motion.h2>
       </div>
     </section>
   );
